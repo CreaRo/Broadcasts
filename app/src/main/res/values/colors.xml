@@ -5,4 +5,15 @@
 
     <color name="AppColorPrimary">#FF5722</color>
     <color name="AppColorPrimaryDark">#E64A19</color>
+
+    <color name="Background">#FFFFFF</color>
+
+    <color name="UpcomingEvent">#8BC34A</color>
+    <color name="PassedEvent">#FF5722</color>
+
+    <color name="UpcomingEventBackground">#FFFFFF</color>
+    <color name="PassedEventBackground">#F5F5F5</color>
+
+
+
 </resources>

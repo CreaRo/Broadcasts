@@ -2,23 +2,20 @@ package rish.crearo.gcmtester.Adapters;
 
 import android.content.Context;
 import android.util.Log;
-import android.util.Printer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.PriorityQueue;
 
 import rish.crearo.gcmtester.Database.Broadcast;
 import rish.crearo.gcmtester.R;
-import rish.crearo.gcmtester.Utils.Constants;
 
 /**
  * Created by rish on 10/10/15.
@@ -34,7 +31,8 @@ public class HomeListViewAdapter extends BaseAdapter {
     }
 
     private static class ViewHolder {
-        TextView h_title, h_content, h_date, h_location, h_from;
+        TextView h_title, h_content, h_date, h_location, h_from, h_color;
+        LinearLayout linearLayout;
     }
 
     @Override
@@ -57,8 +55,6 @@ public class HomeListViewAdapter extends BaseAdapter {
 
         Broadcast broadcast = getItem(position);
         ViewHolder viewHolder;
-//        Typeface type = TheFont.getPrimaryTypeface(getContext());
-//        Typeface typeBold = TheFont.getPrimaryTypefaceBold(getContext());
 
         if (convertView == null) {
             viewHolder = new ViewHolder();
@@ -67,8 +63,11 @@ public class HomeListViewAdapter extends BaseAdapter {
             viewHolder.h_title = (TextView) convertView.findViewById(R.id.listelement_title);
             viewHolder.h_content = (TextView) convertView.findViewById(R.id.listelement_content);
             viewHolder.h_date = (TextView) convertView.findViewById(R.id.listelement_date);
+            viewHolder.h_color = (TextView) convertView.findViewById(R.id.listelement_color);
             viewHolder.h_location = (TextView) convertView.findViewById(R.id.listelement_location);
             viewHolder.h_from = (TextView) convertView.findViewById(R.id.listelement_from);
+            viewHolder.linearLayout = (LinearLayout) convertView.findViewById(R.id.listelement_layout);
+
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -110,6 +109,16 @@ public class HomeListViewAdapter extends BaseAdapter {
 
             } catch (Exception e) {
                 viewHolder.h_date.setText(broadcast.dateEvent);
+            }
+
+            if (System.currentTimeMillis() < Long.parseLong(broadcast.dateEvent)) {
+                // even upcoming
+                viewHolder.h_color.setBackgroundResource(R.color.UpcomingEvent);
+                viewHolder.linearLayout.setBackgroundResource(R.color.UpcomingEventBackground);
+            } else {
+                // even date passed
+                viewHolder.h_color.setBackgroundResource(R.color.PassedEvent);
+                viewHolder.linearLayout.setBackgroundResource(R.color.PassedEventBackground);
             }
         }
         return convertView;

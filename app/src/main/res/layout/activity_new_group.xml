@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="rish.crearo.gcmtester.GroupsActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/new_group_rellay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,6 +20,7 @@
             android:id="@+id/groups_subscribed_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/groups_tool_bar"
             android:orientation="vertical">
 
             <TextView
@@ -45,13 +47,16 @@
         <ListView
             android:id="@+id/groups_subscribed_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
+            android:layout_below="@+id/groups_subscribed_title"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/groups_subscribed_ll"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
@@ -62,41 +67,26 @@
         <ListView
             android:id="@+id/groups_broadcastable_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/textView"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:text="Create New Group"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/til1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
-
-            <EditText
-                android:id="@+id/new_group_name"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="GroupName" />
-        </android.support.design.widget.TextInputLayout>
-
-        <Button
-            android:id="@+id/new_group_okay"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/new_group_btn_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Create Group" />
+            android:layout_alignBottom="@+id/groups_broadcastable_ll"
+            android:layout_alignEnd="@+id/groups_broadcastable_ll"
+            android:layout_alignRight="@+id/groups_broadcastable_ll"
+            android:layout_marginBottom="20dp"
+            android:elevation="10dp"
+            android:src="@android:drawable/ic_menu_add"
+            app:backgroundTint="@color/AppColorPrimary"
+            app:fabSize="normal"
+            app:rippleColor="@color/AppColorPrimaryDark" />
 
 
-    </LinearLayout>
-</ScrollView>
+    </RelativeLayout>
+</LinearLayout>

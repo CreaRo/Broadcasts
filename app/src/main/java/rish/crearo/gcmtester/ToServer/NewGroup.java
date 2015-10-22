@@ -30,13 +30,17 @@ public class NewGroup {
                     @Override
                     public void onResponse(JSONObject response) {
                         System.out.println("RESPONSE = " + response);
-                        callback.onSuccessGroup();
+                        if (response.toString().contains("success")) {
+                            callback.onSuccessGroup();
+                        } else {
+                            callback.onFailureGroup("Group Name already exists");
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.e("Error: ", error.getMessage());
-                callback.onFailureGroup();
+                callback.onFailureGroup("Error in connection");
             }
         }) {
 //            @Override
@@ -56,6 +60,6 @@ public class NewGroup {
     public interface NewGroupCallback {
         void onSuccessGroup();
 
-        void onFailureGroup();
+        void onFailureGroup(String message);
     }
 }

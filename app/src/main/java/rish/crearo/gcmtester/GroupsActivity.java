@@ -1,6 +1,7 @@
 package rish.crearo.gcmtester;
 
 import android.app.ProgressDialog;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,17 +24,15 @@ import me.drakeet.materialdialog.MaterialDialog;
 import rish.crearo.gcmtester.Adapters.SubscribedGroupsAdapter;
 import rish.crearo.gcmtester.Database.EachGroup;
 import rish.crearo.gcmtester.Database.User;
+import rish.crearo.gcmtester.Dialogs.CreateGroup;
 import rish.crearo.gcmtester.ToServer.NewBroadcast;
 import rish.crearo.gcmtester.ToServer.NewGroup;
 import rish.crearo.gcmtester.Utils.TheDate;
 
-public class GroupsActivity extends AppCompatActivity implements NewGroup.NewGroupCallback, NewBroadcast.BroadcastToListener {
+public class GroupsActivity extends AppCompatActivity implements NewBroadcast.BroadcastToListener {
 
-    @Bind(R.id.new_group_name)
-    EditText name;
-
-    @Bind(R.id.new_group_okay)
-    Button okaybtn;
+    @Bind(R.id.new_group_btn_fab)
+    FloatingActionButton okaybtn;
 
     @Bind(R.id.groups_broadcastable_ll)
     ListView broadcastableListView;
@@ -79,19 +78,9 @@ public class GroupsActivity extends AppCompatActivity implements NewGroup.NewGro
         okaybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewGroup.createGroup(new EachGroup(name.getText().toString(), User.getUserName(), TheDate.getDate(), true), GroupsActivity.this);
+                new CreateGroup(GroupsActivity.this).show();
             }
         });
-    }
-
-    @Override
-    public void onSuccessGroup() {
-        Snackbar.make(findViewById(R.id.new_group_rellay), "Successfully Created!", Snackbar.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onFailureGroup() {
-        Snackbar.make(findViewById(R.id.new_group_rellay), "Couldn't be created :(", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
