@@ -52,24 +52,42 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
+            android:id="@+id/groups_broadcastable_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/groups_subscribed_ll"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:text="Groups Available For Broadcast"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/groups_subscribed_ll"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Groups Available For Broadcast"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="These are groups you can broadcast to"
+                android:textSize="13sp"
+                android:textStyle="normal" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/groups_broadcastable_ll"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/groups_broadcastable_title"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
@@ -84,7 +102,7 @@
             android:elevation="10dp"
             android:src="@android:drawable/ic_menu_add"
             app:backgroundTint="@color/AppColorPrimary"
-            app:fabSize="normal"
+            app:fabSize="mini"
             app:rippleColor="@color/AppColorPrimaryDark" />
 
 

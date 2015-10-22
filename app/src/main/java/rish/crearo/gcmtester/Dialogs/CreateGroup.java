@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,9 +40,12 @@ public class CreateGroup extends Dialog implements NewGroup.NewGroupCallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_create_new_group);
+
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        ButterKnife.bind(this);
         setCancelable(true);
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +58,7 @@ public class CreateGroup extends Dialog implements NewGroup.NewGroupCallback {
 
     @Override
     public void onSuccessGroup() {
-        Snackbar.make(findViewById(R.id.new_group_rellay), "Successfully Created!", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(findViewById(R.id.dialog_create_group_rellay), "Successfully Created!", Snackbar.LENGTH_LONG).show();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -65,7 +69,7 @@ public class CreateGroup extends Dialog implements NewGroup.NewGroupCallback {
 
     @Override
     public void onFailureGroup(String message) {
-        Snackbar.make(findViewById(R.id.new_group_rellay), "Couldn't be created. \n" + message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(findViewById(R.id.dialog_create_group_rellay), "Couldn't be created. \n" + message, Snackbar.LENGTH_LONG).show();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

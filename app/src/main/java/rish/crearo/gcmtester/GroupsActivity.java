@@ -2,14 +2,12 @@ package rish.crearo.gcmtester;
 
 import android.app.ProgressDialog;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -23,11 +21,8 @@ import butterknife.ButterKnife;
 import me.drakeet.materialdialog.MaterialDialog;
 import rish.crearo.gcmtester.Adapters.SubscribedGroupsAdapter;
 import rish.crearo.gcmtester.Database.EachGroup;
-import rish.crearo.gcmtester.Database.User;
 import rish.crearo.gcmtester.Dialogs.CreateGroup;
 import rish.crearo.gcmtester.ToServer.NewBroadcast;
-import rish.crearo.gcmtester.ToServer.NewGroup;
-import rish.crearo.gcmtester.Utils.TheDate;
 
 public class GroupsActivity extends AppCompatActivity implements NewBroadcast.BroadcastToListener {
 
@@ -46,12 +41,18 @@ public class GroupsActivity extends AppCompatActivity implements NewBroadcast.Br
     ProgressDialog loadingProgressDialog;
     MaterialDialog warningDialog;
 
+    @Bind(R.id.groups_tool_bar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_group);
+        setContentView(R.layout.activity_groups);
 
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Groups");
 
         loadingProgressDialog = ProgressDialog.show(GroupsActivity.this, "Validating You", "Are you eligible to send broadcasts?", true);
         loadingProgressDialog.setCancelable(false);

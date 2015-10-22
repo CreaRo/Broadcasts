@@ -47,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.home_tool_bar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Broadcasts");
 
         ButterKnife.bind(this);
 
