@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -40,6 +41,9 @@ public class NewBroadcastActivity extends AppCompatActivity implements NewBroadc
     @Bind(R.id.new_broadcast)
     Button send;
 
+    @Bind(R.id.send_broadcast_tool_bar)
+    Toolbar toolbar;
+
     ProgressDialog loadingProgressDialog;
     MaterialDialog warningDialog;
 
@@ -51,6 +55,9 @@ public class NewBroadcastActivity extends AppCompatActivity implements NewBroadc
         setContentView(R.layout.activity_send_broadcast);
 
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("New Broadcast");
 
         validateBroadcaster();
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/BackgroundSecondary"
     tools:context="rish.crearo.gcmtester.GroupsActivity">
 
     <RelativeLayout
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/groups_tool_bar"
+            android:background="@drawable/ripple_background"
             android:orientation="vertical">
 
             <TextView
@@ -30,6 +32,7 @@
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:text="Subscribed Groups"
+                android:textColor="@color/TextColorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -40,6 +43,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="Tap To Expand"
+                android:textColor="@color/TextColorSecondary"
                 android:textSize="13sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -50,13 +54,15 @@
             android:layout_height="300dp"
             android:layout_below="@+id/groups_subscribed_title"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:background="@color/BackgroundSecondary" />
 
         <LinearLayout
             android:id="@+id/groups_broadcastable_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/groups_subscribed_ll"
+            android:background="@drawable/ripple_background"
             android:orientation="vertical">
 
             <TextView
@@ -67,6 +73,7 @@
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:text="Groups Available For Broadcast"
+                android:textColor="@color/TextColorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -78,6 +85,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="These are groups you can broadcast to"
+                android:textColor="@color/TextColorSecondary"
                 android:textSize="13sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -89,16 +97,17 @@
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/groups_broadcastable_title"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:background="@color/BackgroundSecondary" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/new_group_btn_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/groups_broadcastable_ll"
-            android:layout_alignEnd="@+id/groups_broadcastable_ll"
-            android:layout_alignRight="@+id/groups_broadcastable_ll"
-            android:layout_marginBottom="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
             android:elevation="10dp"
             android:src="@android:drawable/ic_menu_add"
             app:backgroundTint="@color/AppColorPrimary"

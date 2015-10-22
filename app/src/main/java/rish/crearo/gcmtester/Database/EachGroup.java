@@ -47,7 +47,7 @@ public class EachGroup extends SugarRecord<EachGroup> {
                     JSONArray postsArray = response.getJSONArray(Constants.TAG_GROUPS);
                     for (int i = 0; i < postsArray.length(); i++) {
                         JSONObject jsonObject = postsArray.getJSONObject(i);
-                        EachGroup group = new EachGroup(jsonObject.getString("g_name"), jsonObject.getString("g_owner"), jsonObject.getString("g_created_date"), false);
+                        EachGroup group = new EachGroup(jsonObject.getString("g_name").toLowerCase(), jsonObject.getString("g_owner").toLowerCase(), jsonObject.getString("g_created_date"), false);
                         group.save();
                     }
                     callback.onSuccessGroupRefresh();

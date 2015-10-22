@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import rish.crearo.gcmtester.Database.EachGroup;
@@ -23,10 +25,15 @@ public class SubscribedGroupsAdapter extends BaseAdapter {
 
     Context context;
     ArrayList<EachGroup> subscribedGroups;
+    boolean checked[];
+
 
     public SubscribedGroupsAdapter(Context context, ArrayList<EachGroup> subscribedGroups) {
         this.context = context;
         this.subscribedGroups = subscribedGroups;
+        checked = new boolean[subscribedGroups.size()];
+        for (int i = 0; i < subscribedGroups.size(); i++)
+            checked[i] = subscribedGroups.get(i).subscribed;
     }
 
     @Override
@@ -45,8 +52,8 @@ public class SubscribedGroupsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
-        EachGroup subscribedGroup = getItem(i);
+    public View getView(final int i, View convertView, ViewGroup viewGroup) {
+        final EachGroup subscribedGroup = getItem(i);
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.element_subscribed_group, null);
             new ViewHolder(convertView);
@@ -54,9 +61,19 @@ public class SubscribedGroupsAdapter extends BaseAdapter {
 
         ViewHolder holder = (ViewHolder) convertView.getTag();
 
-        holder.checkBox.setChecked(subscribedGroup.subscribed);
         holder.checkBox.setText(subscribedGroup.name);
 
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                subscribedGroup.subscribed = b;
+                checked[i] = b;
+                subscribedGroup.save();
+            }
+        });
+
+        holder.checkBox.setChecked(checked[i]);
+        
         return convertView;
     }
 

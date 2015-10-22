@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.orm.StringUtil;
 import com.orm.query.Select;
 
 import java.util.ArrayList;
@@ -34,6 +35,9 @@ public class GroupsActivity extends AppCompatActivity implements NewBroadcast.Br
 
     @Bind(R.id.groups_subscribed_title)
     LinearLayout subscribedGroupTitle;
+
+    @Bind(R.id.groups_broadcastable_title)
+    LinearLayout groups_broadcastable_title;
 
     @Bind(R.id.groups_subscribed_ll)
     ListView subscribedGroupListView;
@@ -59,6 +63,9 @@ public class GroupsActivity extends AppCompatActivity implements NewBroadcast.Br
         loadingProgressDialog.show();
         NewBroadcast.groupBroadcastableTo(getApplicationContext(), this);
 
+        subscribedGroupListView.setVisibility(View.GONE);
+        broadcastableListView.setVisibility(View.GONE);
+
         subscribedGroupTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,9 +76,17 @@ public class GroupsActivity extends AppCompatActivity implements NewBroadcast.Br
             }
         });
 
-        ArrayList<EachGroup> subscribedGroups = (ArrayList<EachGroup>) Select.from(EachGroup.class).list();
+        groups_broadcastable_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (broadcastableListView.getVisibility() == View.VISIBLE)
+                    broadcastableListView.setVisibility(View.GONE);
+                else
+                    broadcastableListView.setVisibility(View.VISIBLE);
+            }
+        });
 
-        Log.d("GroupsAct", "size of subgroups = " + subscribedGroups.size());
+        ArrayList<EachGroup> subscribedGroups = (ArrayList<EachGroup>) Select.from(EachGroup.class).orderBy(StringUtil.toSQLName("name")).list();
 
         SubscribedGroupsAdapter adapter = new SubscribedGroupsAdapter(getApplicationContext(), subscribedGroups);
         subscribedGroupListView.setAdapter(adapter);

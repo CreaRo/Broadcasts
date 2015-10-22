@@ -1,6 +1,7 @@
 package rish.crearo.gcmtester.Dialogs;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,6 +33,8 @@ public class CreateGroup extends Dialog implements NewGroup.NewGroupCallback {
 
     Context context;
 
+    ProgressDialog progDailog;
+
     public CreateGroup(Context context) {
         super(context);
         this.context = context;
@@ -52,6 +55,7 @@ public class CreateGroup extends Dialog implements NewGroup.NewGroupCallback {
             public void onClick(View view) {
                 NewGroup.createGroup(new EachGroup(nameGroup.getText().toString(), User.getUserName(), TheDate.getDate(), true), CreateGroup.this);
                 createBtn.setEnabled(false);
+                progDailog = ProgressDialog.show(context, "Creating Group", "", true);
             }
         });
     }
@@ -65,6 +69,7 @@ public class CreateGroup extends Dialog implements NewGroup.NewGroupCallback {
                 dismiss();
             }
         }, 1500);
+        progDailog.dismiss();
     }
 
     @Override
@@ -76,5 +81,6 @@ public class CreateGroup extends Dialog implements NewGroup.NewGroupCallback {
                 dismiss();
             }
         }, 1500);
+        progDailog.dismiss();
     }
 }
