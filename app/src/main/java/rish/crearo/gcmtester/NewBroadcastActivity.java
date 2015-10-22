@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,10 +47,22 @@ public class NewBroadcastActivity extends AppCompatActivity implements NewBroadc
     @Bind(R.id.send_broadcast_tool_bar)
     Toolbar toolbar;
 
+    @Bind(R.id.broadcast_add_location)
+    TextView addLocation;
+
+    @Bind(R.id.broadcast_add_datetime)
+    TextView addDateTime;
+
+    @Bind(R.id.broadcast_location_ll)
+    LinearLayout location_ll;
+
+    @Bind(R.id.broadcast_remove_location)
+    ImageView removeLocation;
+
     ProgressDialog loadingProgressDialog;
     MaterialDialog warningDialog;
 
-    private static final String TAG = "NEWBROADCASTACT";
+    private static final String TAG = "NEW_BROADCAST";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +75,26 @@ public class NewBroadcastActivity extends AppCompatActivity implements NewBroadc
         getSupportActionBar().setTitle("New Broadcast");
 
         validateBroadcaster();
+
+
+        location_ll.setVisibility(View.GONE);
+
+        addLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                location_ll.setVisibility(View.VISIBLE);
+                addLocation.setVisibility(View.GONE);
+            }
+        });
+        removeLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                location_ll.setVisibility(View.GONE);
+                addLocation.setVisibility(View.VISIBLE);
+                location.setText("");
+            }
+        });
+
 
         send.setEnabled(false);
 
@@ -87,6 +122,7 @@ public class NewBroadcastActivity extends AppCompatActivity implements NewBroadc
     @Override
     public void onFailureBroadcast() {
         Snackbar.make(findViewById(R.id.send_rellay), "Failed Broadcasting :(", Snackbar.LENGTH_LONG).show();
+        send.setEnabled(true);
     }
 
     @Override

@@ -1,65 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/send_rellay"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="rish.crearo.gcmtester.NewBroadcastActivity">
+    android:background="@color/BackgroundSecondary">
 
-    <include
-        android:id="@+id/send_broadcast_tool_bar"
-        layout="@layout/tool_bar" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/new_title"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Title" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/new_content"
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:gravity="bottom"
-            android:hint="Content" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/new_location"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Location" />
-    </android.support.design.widget.TextInputLayout>
-
-    <Spinner
-        android:id="@+id/new_for_spinner"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/send_rellay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dialog" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="rish.crearo.gcmtester.NewBroadcastActivity">
 
-    <Button
-        android:id="@+id/new_broadcast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Broadcast" />
+        <include
+            android:id="@+id/send_broadcast_tool_bar"
+            layout="@layout/tool_bar" />
 
-</LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/new_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <EditText
+                android:id="@+id/new_content"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:gravity="bottom"
+                android:hint="Content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/broadcast_add_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ripple_background"
+            android:text="+ Add Location"
+            android:textColor="@color/TextColorSecondary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/broadcast_location_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/new_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Location" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/broadcast_remove_location"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/delete" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/broadcast_add_datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_background"
+            android:text="+ Add Date and Time"
+            android:textColor="@color/TextColorSecondary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Broadcast To : "
+            android:textColor="@color/TextColorSecondary"
+            android:textSize="13sp"
+            android:textStyle="normal" />
+
+        <Spinner
+            android:id="@+id/new_for_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/Background"
+            android:padding="5dp"
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/new_broadcast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Broadcast" />
+
+    </LinearLayout>
+</ScrollView>

@@ -73,7 +73,7 @@ public class SubscribedGroupsAdapter extends BaseAdapter {
         });
 
         holder.checkBox.setChecked(checked[i]);
-        
+
         return convertView;
     }
 

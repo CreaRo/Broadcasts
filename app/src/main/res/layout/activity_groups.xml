@@ -51,11 +51,20 @@
         <ListView
             android:id="@+id/groups_subscribed_ll"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="match_parent"
             android:layout_below="@+id/groups_subscribed_title"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/BackgroundSecondary" />
+            android:background="@color/BackgroundSecondary"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/groups_subscribed_ll"
+            android:background="@color/BackgroundSecondary"
+            android:elevation="1dp" />
 
         <LinearLayout
             android:id="@+id/groups_broadcastable_title"
@@ -93,12 +102,13 @@
         <ListView
             android:id="@+id/groups_broadcastable_ll"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/groups_broadcastable_title"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/BackgroundSecondary" />
+            android:background="@color/BackgroundSecondary"
+            android:visibility="gone" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/new_group_btn_fab"
@@ -109,9 +119,9 @@
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
             android:elevation="10dp"
-            android:src="@android:drawable/ic_menu_add"
+            android:src="@drawable/add_user_group"
             app:backgroundTint="@color/AppColorPrimary"
-            app:fabSize="mini"
+            app:fabSize="normal"
             app:rippleColor="@color/AppColorPrimaryDark" />
 
 
