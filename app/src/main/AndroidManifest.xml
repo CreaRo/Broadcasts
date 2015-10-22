@@ -72,9 +72,14 @@
 
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"></activity>
-        <activity android:name=".NewBroadcastActivity"></activity>
-        <activity android:name=".GroupsActivity"></activity>
+            android:label="@string/title_activity_home"
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+        <activity
+            android:name=".NewBroadcastActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+        <activity
+            android:name=".GroupsActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
     </application>
 
 </manifest>

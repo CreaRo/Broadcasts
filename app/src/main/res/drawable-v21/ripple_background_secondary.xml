@@ -3,5 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:color="@color/TextColorSecondary">
 
-    <item android:drawable="@color/Background" />
+    <item android:drawable="@color/BackgroundSecondary" />
 </ripple>
