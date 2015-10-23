@@ -5,6 +5,7 @@ from sqlalchemy.sql import func
 from flask import render_template, redirect, url_for
 from random import randint
 from time import sleep
+from loginmod import makerequest
 import time
 
 config = {
@@ -177,6 +178,13 @@ def groupsChangedBroadcast():
 	sendBroadcast(broadcast)
 	return ''
 	
+@app.route('/verify/<username>/<pwd>')
+def verify(username, pwd):
+	if makerequest(username,pwd): 
+		return "{'status':'true'}"
+	else:
+		return "{'status':'false'}"
+
 if __name__ == '__main__':
 	db.create_all()
 	if db.session.query(Group).count() == 0:

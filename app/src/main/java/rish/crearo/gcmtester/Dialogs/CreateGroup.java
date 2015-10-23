@@ -53,7 +53,7 @@ public class CreateGroup extends Dialog implements NewGroup.NewGroupCallback {
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewGroup.createGroup(new EachGroup(nameGroup.getText().toString(), User.getUserName(), TheDate.getDate(), true), CreateGroup.this);
+                NewGroup.createGroup(new EachGroup(nameGroup.getText().toString(), User.getUsername(getContext()), TheDate.getDate(), true), CreateGroup.this);
                 createBtn.setEnabled(false);
                 progDailog = ProgressDialog.show(context, "Creating Group", "", true);
             }

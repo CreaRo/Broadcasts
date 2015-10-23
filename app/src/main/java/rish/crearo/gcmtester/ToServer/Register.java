@@ -1,5 +1,7 @@
 package rish.crearo.gcmtester.ToServer;
 
+import android.content.Context;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
@@ -19,11 +21,11 @@ import rish.crearo.gcmtester.Utils.TheDate;
  */
 public class Register {
 
-    public static void registerWithToken(String token, final RegisterCallback callback) {
+    public static void registerWithToken(Context context, String token, final RegisterCallback callback) {
         HashMap<String, String> params = new HashMap<String, String>();
 
-        params.put("u_studentid", User.getUserName());
-        params.put("u_blue", User.getPassword());
+        params.put("u_studentid", User.getUsername(context));
+        params.put("u_blue", User.getPassword(context));
         params.put("u_token", token);
         params.put("u_register_date", TheDate.getDate());
         params.put("u_permission_number", "" + User.getPermissionNumber());

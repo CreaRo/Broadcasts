@@ -17,10 +17,12 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
+import rish.crearo.gcmtester.Database.User;
+import rish.crearo.gcmtester.Dialogs.Login;
 import rish.crearo.gcmtester.GCMUtils.RegistrationIntentService;
 import rish.crearo.gcmtester.Utils.Constants;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity implements User.UserAuthenticationListener {
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";
@@ -54,15 +56,20 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         };
 
-        if (checkPlayServices()) {
-            Log.d(TAG, "checked PlayServices");
-            // Start IntentService to register this application with GCM.
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
-        } else {
-            Snackbar.make(findViewById(R.id.main_rellay), "This device isn't supported", Snackbar.LENGTH_LONG).show();
-        }
         LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(Constants.PREF_REGISTRATION_COMPLETE));
+
+        if (User.getUsername(getApplicationContext()) != null) {
+            if (checkPlayServices()) {
+                Log.d(TAG, "checked PlayServices");
+                // Start IntentService to register this application with GCM.
+                Intent intent = new Intent(this, RegistrationIntentService.class);
+                startService(intent);
+            } else {
+                Snackbar.make(findViewById(R.id.main_rellay), "This device isn't supported", Snackbar.LENGTH_LONG).show();
+            }
+        } else {
+            new Login(RegistrationActivity.this, RegistrationActivity.this).show();
+        }
     }
 
     @Override
@@ -90,5 +97,21 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void AuthenticationResult(boolean auth) {
+        if (auth) {
+            if (checkPlayServices()) {
+                Log.d(TAG, "checked PlayServices");
+                // Start IntentService to register this application with GCM.
+                Intent intent = new Intent(this, RegistrationIntentService.class);
+                startService(intent);
+            } else {
+                Snackbar.make(findViewById(R.id.main_rellay), "This device isn't supported", Snackbar.LENGTH_LONG).show();
+            }
+        } else {
+            Snackbar.make(findViewById(R.id.main_rellay), "Login using your Webmail ID!", Snackbar.LENGTH_LONG).show();
+        }
     }
 }

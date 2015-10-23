@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@color/Background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_user_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Webmail ID"
+        android:textColor="@color/TextColorPrimary"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dialog_user_sub_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="To subscribe, broadcast and receive notifications, you must be a part of DA-IICT"
+        android:textColor="@color/TextColorPrimary"
+        android:textSize="15dp" />
+
+
+    <EditText
+        android:id="@+id/dialog_user_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:hint="Enter webmail ID"
+        android:textColor="@color/TextColorPrimary"
+        android:textColorHint="@color/TextColorSecondary" />
+
+    <EditText
+        android:id="@+id/dialog_user_pwd_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:hint="Enter webmail password"
+        android:inputType="textPassword"
+        android:textColor="@color/TextColorPrimary"
+        android:textColorHint="@color/TextColorSecondary" />
+
+
+    <Button
+        android:id="@+id/dialog_user_verify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Verify"
+        android:textStyle="bold" />
+</LinearLayout>

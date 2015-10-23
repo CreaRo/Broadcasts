@@ -51,7 +51,7 @@ public class RegistrationIntentService extends IntentService implements Register
     }
 
     private void sendRegistrationToServer(String token) {
-        Register.registerWithToken(token, this);
+        Register.registerWithToken(getApplicationContext(), token, this);
     }
 
     @Override

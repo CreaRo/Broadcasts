@@ -74,7 +74,7 @@ public class NewBroadcast {
     public static void groupBroadcastableTo(final Context context, final BroadcastToListener callback) {
 
         final ArrayList<EachGroup> canBroadcastTo = new ArrayList<>();
-        JsonObjectRequest objectRequest = new JsonObjectRequest(Constants.BASE_URL_GROUPS_BROADCASTABLE + User.getUserName(), new Response.Listener<JSONObject>() {
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Constants.BASE_URL_GROUPS_BROADCASTABLE + User.getUsername(context), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("response", response.toString());

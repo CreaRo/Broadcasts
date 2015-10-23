@@ -101,7 +101,7 @@ public class NewBroadcastActivity extends AppCompatActivity implements NewBroadc
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewBroadcast.sendBroadcast(new Broadcast(title.getText().toString(), content.getText().toString(), User.getUserName(), forGroupSpinner.getSelectedItem().toString(), TheDate.getDate(), TheDate.getDate(), location.getText().toString()), NewBroadcastActivity.this);
+                NewBroadcast.sendBroadcast(new Broadcast(title.getText().toString(), content.getText().toString(), User.getUsername(getApplicationContext()), forGroupSpinner.getSelectedItem().toString(), TheDate.getDate(), TheDate.getDate(), location.getText().toString()), NewBroadcastActivity.this);
                 send.setEnabled(false);
             }
         });

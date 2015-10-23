@@ -15,8 +15,10 @@ public class Constants {
     public static final String BASE_URL_REGISTER = "http://192.168.150.1:8080/register";
     public static final String BASE_URL_NEW_BROADCAST = "http://192.168.150.1:8080/broadcasts/create";
     public static final String BASE_URL_NEW_GROUP = "http://192.168.150.1:8080/groups/create";
+    public static final String BASE_URL_VERIFY = "http://192.168.150.1:8080/verify";
     public static final String BASE_URL_GROUPS = "http://192.168.150.1:8080/groups/all";
     public static final String BASE_URL_GROUPS_BROADCASTABLE = "http://192.168.150.1:8080/groups/adminof/"; // use with <username> in front
+
 
     public static final String TAG_GROUPS = "results";
 
@@ -27,6 +29,9 @@ public class Constants {
     public static final String BC_DATE_POST = "b_date_post";
     public static final String BC_DATE_EVENT = "b_date_event";
     public static final String BC_LOCATION = "b_location";
+
+    public static final String USERNAME = "USERNAME";
+    public static final String PASSWORD = "PWD";
 
     public static final String LOCALBR_REFRESH_ADAPTERS = "LOCALBR_REFRESH_ADAPTERS";
 
